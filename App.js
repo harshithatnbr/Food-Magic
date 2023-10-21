@@ -8,12 +8,12 @@ import logo from  "./images/logo.png"
 const Header= ()=>
 {
     return (
-        <div id="header">
+      <div id='Header'>
         <div className='logo'> 
         <img src={logo} alt="app-logo"/>
         <label className="food-logo"> Food Magic</label>
         </div>
-         <div className="nav-bar">
+      <div className="nav-bar">
              <ul className="menu-items">
                <li><a href="#home" className="nav-link">Home</a></li>
                  <li><a href="#about-us" className="nav-link">About Us</a></li>
@@ -21,7 +21,6 @@ const Header= ()=>
                  <li> <a href="#cart" className="nav-link"> Cart </a>  </li>
              </ul> 
        </div>
-       
        </div>
     );
 }
@@ -1889,7 +1888,7 @@ const Body=()=>
         <div className='cards-container'>
         {
         restaurantList.map((restaurant) => {
-        return <Card resData={...restaurant.data} />;
+        return <Card key={restaurant.data.id} resData={...restaurant.data} />;
       })}
         </div>
        </div>
@@ -1913,7 +1912,7 @@ const App=()=>
 {
     return(
         <div className='app'>
-           <Header/>
+
            <Body/>
            <Footer/>
         </div>
