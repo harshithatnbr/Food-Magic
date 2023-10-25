@@ -1,5 +1,8 @@
+
+
 // this is reaturant data taken from swiggy api
-const restaurantList = [
+  // end to data
+var restaurantList=[
     {
       type: "restaurant",
       data: {
@@ -1810,7 +1813,5 @@ const restaurantList = [
       },
       subtype: "basic",
     },
-  ];
-  // end to data
-
-  export default restaurantList;
+];
+export default restaurantList;
