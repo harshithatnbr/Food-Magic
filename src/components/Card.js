@@ -19,12 +19,13 @@ export const Card=(props)=>
         <div className = "about-place">
           <div className = "place">
             <p className = "place-name">{resData.name}</p>
-            <p className = "place-speciality">{resData.area}</p>
+            
             <p className = "place-speciality cusines">{resData.cuisines.join(", ")}</p>
+            <p className = "place-speciality"id="area">{resData.areaName}</p>
           </div>
           <div className = "place-review">
             <p className = "rating">{resData.avgRating} &#x2605;</p>
-            <p className = "per-person"> &#x20b9; {resData.costForTwo}</p>
+            <p className = "per-person"> {resData.costForTwo}</p>
             <p className = "place-speciality">{resData.lastMileTravelString}</p>
           </div>
         </div>
