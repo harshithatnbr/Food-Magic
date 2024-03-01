@@ -1,6 +1,6 @@
 
 import {CDN_URL} from "../utils/constants"
-import Body from "./Body";
+
 
 // start of card
 export const Card=(props)=>

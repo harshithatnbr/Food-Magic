@@ -3,24 +3,17 @@ import { useEffect, useState } from "react";
 // start of body
 import Card from "./Card";
 import Shimmer from "./Shimmer";
-import { NEW_URL, SWIGGY_API } from "../utils/constants";
-import { dummy } from "../utils/constants";
+import useBody from "../utils/useBody";
 const Body=()=>
 {
-  const [List, setList] = useState([]);
-  const [ModifiedList,setModifiedList]=useState([]);
+  
   const [searchData,setsearchData]=useState("");
+ 
   const [ErrorMessage, setErrorMessage] = useState("");
-  useEffect(()=>{fetchData()},[]);
-  const fetchData=async ()=>{
-    //const data= await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&page_type=DESKTOP_WEB_LISTING");
-    const data=await fetch(SWIGGY_API);
-    const json=await data.json();// .json () converts data from readable stream to json
-    console.log(json.data);
-    setList(json.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setModifiedList(json.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-   console.log(List);
-  }
+  let List=useBody();
+
+  const [ModifiedList,setModifiedList]=useState(List);
+  console.log(ModifiedList);
   
   function update(List)
   {
@@ -44,7 +37,6 @@ const Body=()=>
             onChange={(e)=>{setsearchData(e.target.value);}}></input>
             <button className="filter-btn" role="button" onClick={()=>
             {
-             // console.log(searchData);
              const ele=List.filter((res)=>
              res?.info?.name.toLowerCase().includes(searchData.toLowerCase()));
              if(ele.length===0)
@@ -62,7 +54,7 @@ const Body=()=>
           </div>
           <div className='cards-container'>
         {
-        ModifiedList.map((restaurant) => {
+          List.map((restaurant) => {
         return <Card key={restaurant.info.id} resData={...restaurant.info} />;
       })}
         </div>
